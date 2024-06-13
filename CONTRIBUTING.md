@@ -38,7 +38,7 @@ N.B While working on this project the NM-TAFE code of conduct still applies.
 
 ---
 
-New ideas can be suggested and discussed on our the Team Discussion Board or Teams Chats first before implementing changes. **_channel link_**
+New ideas can be suggested and discussed on our the Team Discussion Board or Teams Chats first before implementing changes.
 
 ## LICENCE
 
