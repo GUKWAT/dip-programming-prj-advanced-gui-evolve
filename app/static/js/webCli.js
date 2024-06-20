@@ -21,26 +21,35 @@ if (localStorage.getItem("webCliOpen")  === "true") {
 
 // Add key listener to the webcli to send commands with enter key
 webCliContainer.addEventListener("keydown", function (event) {
-    if (event.code === "Enter") {
-        sendWebCliCommand();
-    } else if (event.code === "ArrowUp") {
-        traversePreviousCommands("up");
-    } else if (event.code === "ArrowDown") {
-        traversePreviousCommands("down");
-    } else if (event.code === "Tab" && event.shiftKey) {
-        event.preventDefault();
-        traverseResponses("up");
-    } else if (event.code === "Tab") {
-        event.preventDefault();
-        if (document.getElementById("webCliInput") === document.activeElement) {
-            autoCompleteCommands();
-        } else {
-            traverseResponses("down");
-        }
-    } else if (event.code === "Space" || event.code === "Backspace") {
-        autoCompleteArray = [];
+    switch (event.code) {
+        case "Enter":
+            sendWebCliCommand();
+            break;
+        case "ArrowUp":
+            traversePreviousCommands("up");
+            break;
+        case "ArrowDown":
+            traversePreviousCommands("down");
+            break;
+        case "Tab":
+            event.preventDefault();
+            if (event.shiftKey) {
+                traverseResponses("up");
+            } else if (document.getElementById("webCliInput") === document.activeElement) {
+                autoCompleteCommands();
+            } else {
+                traverseResponses("down");
+            }
+            break;
+        case "Space":
+        case "Backspace":
+            autoCompleteArray = [];
+            break;
+        default:
+            break;
     }
 });
+
 
 /**
  * Traverse through CLI responses/commands with tab and shift + tab keys
